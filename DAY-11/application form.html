@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPLICATION FORM</title>
+    <style>body {
+        font-size: 16px;
+        background: #f9f9f9;
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+    h2 {
+        text-align: center;
+        text-decoration: underline;
+    }
+    form {
+        width: 300px;
+        background: #fff;
+        padding: 15px 40px 40px;
+        border: 1px solid #ccc;
+        margin: 50px auto 0;
+        border-radius: 5px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px
+    }
+    label i {
+        color: #999;
+        font-size: 80%;
+    }
+    input, select {
+        border: 1px solid #ccc;
+        padding: 10px;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 2px;
+    }
+    .row {
+        padding-bottom: 10px;
+    }
+    .form-inline {
+        border: 1px solid #ccc;
+        padding: 8px 10px 4px;
+        border-radius: 2px;
+    }
+    .form-inline label, .form-inline input {
+        display: inline-block;
+        width: auto;
+        padding-right: 15px;
+    }
+    .error {
+        color: red;
+        font-size: 90%;
+    }
+    input[type="submit"] {
+        font-size: 110%;
+        font-weight: 100;
+        background: #006dcc;
+        border-color: #016BC1;
+        box-shadow: 0 3px 0 #0165b6;
+        color: #fff;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background: #0165b6;
+    }
+    </style>
+</head>
+<body>
+    <script>
+       
+       function printError(elemID,hintMsg)
+{
+{
+    document.getElementById(elemID).innerHTML=hintMsg;
+}
+var nameErr=emailErr=mobileErr=countryErr=genderErr=true;
+
+if (name=="")
+{
+printError("nameErr","please enter a valid name!!");
+}
+else
+{
+    var regex=/[a-z,A-Z\s]+$/;
+    if(regex.test(name)==false)
+    {
+        printError("nameErr","");
+    }
+    else
+    {
+        printError("nameErr","");
+        nameErr=false;
+    }
+}
+
+if (emailaddress=="")
+{
+printError("emailErr","please enter a valid email!!");
+}
+else
+{
+    var regex=/^\S+@\S+\.\S+$/;
+    if(regex.test(emailaddress)==false)
+    {
+        printError("emailErr","");
+    }
+    else
+    {
+        printError("emailErr","");
+        emailErrErr=false;
+    }
+}
+
+if (mobile=="")
+{
+printError("mobileErr","please enter a valid mobile !!");
+}
+else
+{
+    var regex=/^[6-9]\d{9}$/gi;
+    if(regex.test(mobile)==false)
+    {
+        printError("mobileErr","");
+    }
+    else
+    {
+        printError("mobileErr","");
+        mobileErr=false;
+    }
+}
+
+if (country=="")
+{
+printError("countryErr","please enter a valid country !!");
+}
+else
+{
+    
+    
+        printError("countryErr","");
+        countryErr=false;
+    }
+
+
+if (gender=="")
+{
+printError("genderErr","please enter a valid gender !!");
+}
+else
+{   
+    
+        printError("genderErr","");
+        genderErr=false;
+    }
+
+
+function validateForm()
+{
+
+var name=document.contactForm.name.value;
+var email=document.contactForm.email.value;
+var mobile=document.contactForm.mobile.value;
+var country=document.contactForm.country.value;
+var gender=document.contactForm.gender.value;
+
+var hobbies=[];
+var checkbox=document.getElementsByName("hobbies[]");
+
+for(var i=0;i<checkboxes.length;i++)
+{
+if(checkboxes[i].checked)
+{
+    hobbies.push(checkboxes[i].value);
+}
+}
+
+
+if((nameErr||emailErr||mobileErr||countryErr||genderErr)=true)
+{
+    return false;
+}else{
+ var dataPreview="you've entered the following details:\n" +
+                  "Full Name:"+name+"\n" +
+                  "Email Address:"+email+"\n" +
+                  "Mobile Number:"+mobile+"\n"+
+                  "country:"+country+"\n"+
+                  "Gender:"+gender+"\n";
+    if(hobbies.length)
+    {
+       dataPreview +="Hobbies:"+hobbies.join(","); 
+    }  
+    alert(dataPreview);            
+}
+}
+};
+ </script>
+    <form name="contactForm" onsubmit="return validateForm()" action="confirmation.html" method="get">
+        <h2>Application Form</h2>
+        <div class="row">
+            <label>Full Name</label>
+            <input type="text" name="name">
+           <div class="error" id="nameErr"></div>
+        </div>
+        <div class="row">
+            <label>Email Address</label>
+            <input type="text" name="email">
+            <div class="error" id="emailErr"></div>
+        </div>
+        <div class="row">
+            <label>Mobile Number</label>
+            <input type="text" name="mobile" maxlength="10">
+            <div class="error" id="mobileErr"></div>
+        </div>
+        <div class="row">
+            <label>Country</label>
+            <select name="country">
+                <option>Select</option>
+                <option>Australia</option>
+                <option>India</option>
+                <option>United States</option>
+                <option>United Kingdom</option>
+            </select>
+            <div class="error" id="countryErr"></div>
+        </div>
+        <div class="row">
+            <label>Gender</label>
+            <div class="form-inline">
+                <label><input type="radio" name="gender" value="male"> Male</label>
+                <label><input type="radio" name="gender" value="female"> Female</label>
+            </div>
+            <div class="error" id="genderErr"></div>
+        </div>
+        <div class="row">
+            <label>Hobbies <i>(Optional)</i></label>
+            <div class="form-inline">
+                <label><input type="checkbox" name="hobbies[]" value="sports"> Sports</label>
+                <label><input type="checkbox" name="hobbies[]" value="movies"> Movies</label>
+                <label><input type="checkbox" name="hobbies[]" value="music"> Music</label>
+            </div>
+        </div>
+        <div class="row">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+    
+    
+</body>
+</html>
